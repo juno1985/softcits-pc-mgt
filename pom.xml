@@ -4,8 +4,35 @@
     <groupId>org.softcits.com</groupId>
     <artifactId>softcits-pc-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../softcits-pc-parent</relativePath>
   </parent>
+  <groupId>org.softcits.com</groupId>
   <artifactId>softcits-pc-mgt</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <dependencies>
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+			<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+  </dependencies>
 </project>
