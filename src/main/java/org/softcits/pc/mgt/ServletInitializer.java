@@ -1,4 +1,4 @@
-package org.softcits.pc.core;
+package org.softcits.pc.mgt;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -1,0 +1,12 @@
+server:
+  port: 8882
+  servlet:
+    context-path: /mgt
+
+logging:
+  file: logs/pc-core.log 
+  level:
+    root: info
+
+pc.core.base.url: http://localhost:8881
+pc.core.context-path: /core
