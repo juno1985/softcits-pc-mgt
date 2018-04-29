@@ -2,6 +2,8 @@ package org.softcits.pc.mgt.service;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -20,7 +22,7 @@ public class MgtComputerService {
 	@Value("${pc.core.context-path}")
 	private String PC_CORE_CONTEXT_PATH;
 
-	public String getAllComputers() {
+	public String getAllComputers(String pageSize, String pageNum) {
 		// 创建Httpclient对象
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		String resultString = "";
@@ -28,6 +30,14 @@ public class MgtComputerService {
 		try {
 			// 创建uri
 			URIBuilder builder = new URIBuilder( PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/all");
+			//使用Apache HttpClient 传输参数
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("pageSize", pageSize);
+			params.put("pageNum", pageNum);
+			for(String key : params.keySet()) {
+				builder.addParameter(key, params.get(key));
+			}
+			
 			URI uri = builder.build();
 			// 创建http GET请求
 			HttpGet httpGet = new HttpGet(uri);
