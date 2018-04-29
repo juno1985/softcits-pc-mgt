@@ -32,7 +32,7 @@ function pc_list(pageNum, pageSize){
 				 */
 				content += "<tr><td>"+v.id+'</td><td><a id="pc" href="javascript:void(0);" onClick="pcClick(this)" value="'+ v.id +'">'+v.trademark+"</a></td><td>"+v.price+"元</td>"+
 							'<td><a href="javascript:void(0);" onClick="pcUpldate(this)" value="'+v.id+'">更新</a></td>'+
-							'<td><a href="/mgt/admin/pc/delete/'+v.id+'">删除</a></td>'+
+							'<td><a href="javascript:void(0);" onClick ="pcDelete(this)" value="'+v.id+'">删除</a></td>'+
 							"</tr>";
 			}); 
 			content += "</table></tbody>";
@@ -61,4 +61,15 @@ function goPage(pageNum, rows, totalPage){
 	        tempStr += "<span class='btn btn-default'>尾页</span>";
 	    }
 	 return tempStr;
+}
+function pcDelete(obj){
+	/*console.log(obj.getAttribute("value"));*/
+	var cid = obj.getAttribute("value");
+	$.ajax({
+		url: "/mgt/computer/" + cid + "/delete",
+		type: "GET",
+		success:function(data){
+			pc_list(1,7);
+			}
+	});
 }
