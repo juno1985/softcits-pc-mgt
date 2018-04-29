@@ -22,7 +22,7 @@ function pc_list(pageNum, pageSize){
 		    }
 		
 			var data = obj.data;
-			var content = "<table id="+'"pcTable"'+" class="+'"table table-condensed"'+"><tbody>";
+			var content = "<table id="+'"pcTable"'+" class="+'"table table-condensed"'+" style=\"display:none\"><tbody>";
 			content += "<thead><tr><th>商品id</th><th>商品名称</th><th>商品价格</th><th>更新</th><th>删除</th></tr></thead>";
 			// v-value, i-index
 			data.forEach(function(v,i){
@@ -37,7 +37,7 @@ function pc_list(pageNum, pageSize){
 			}); 
 			content += "</table></tbody>";
 			content += goPage(pageNum, pageSize, totalPage);
-			$('#mgt-content').append(content);
+			$('#mgt-content').append(content).find('#pcTable').show('slow');
 		}
 	});	
 }
