@@ -11,10 +11,20 @@ public class MgtComputerController {
 	
 	@Autowired
 	private MgtComputerService mgtComputerService;
+	
+	/**
+	 * 跳转到WEB-INF/jsp/admin.jsp页面
+	 * @return
+	 */
+	@RequestMapping(path= {"","/"}, method = RequestMethod.GET)
+	public String goAdminView() {
+		return "admin";
+	}
 
 	@RequestMapping(path="/computer/all", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAllComputers() {
 		return mgtComputerService.getAllComputers();
 	}
+
 }

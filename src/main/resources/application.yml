@@ -2,7 +2,12 @@ server:
   port: 8882
   servlet:
     context-path: /mgt
-
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+      
 logging:
   file: logs/pc-core.log 
   level:
