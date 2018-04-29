@@ -1,6 +1,8 @@
 package org.softcits.pc.mgt.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,14 @@ public class MgtComputerController {
 
 	@RequestMapping(path="/computer/all", method = RequestMethod.GET)
 	@ResponseBody
-	public String getAllComputers(@RequestParam String pageSize, @RequestParam String pageNum) {
-		return mgtComputerService.getAllComputers(pageSize, pageNum);
+	public ResponseEntity<String> getAllComputers(@RequestParam String pageSize, @RequestParam String pageNum) {
+		return new ResponseEntity<String>(mgtComputerService.getAllComputers(pageSize, pageNum),HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/computer/{cid}/delete", method = RequestMethod.GET)
-	public String deleteById(@PathVariable String cid) {
-		return mgtComputerService.deleteById(cid);
+	@ResponseBody
+	public ResponseEntity<String> deleteById(@PathVariable String cid) {
+		return new ResponseEntity<String>(mgtComputerService.deleteById(cid),HttpStatus.OK);
 	}
 
 }
