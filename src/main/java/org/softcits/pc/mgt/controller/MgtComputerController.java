@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.softcits.pc.mgt.common.SoftcitsJsonUtil;
 import org.softcits.pc.mgt.common.UUIDUtil;
 import org.softcits.pc.mgt.service.MgtComputerService;
 import org.softcits.pc.mgt.model.MbgComputer;
@@ -52,7 +53,7 @@ public class MgtComputerController {
 	
 	@RequestMapping(path="/computer/add", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Map> addComputer(@RequestParam(required=true) String tradeMark, 
+	public ResponseEntity<String> addComputer(@RequestParam(required=true) String tradeMark, 
 			@RequestParam(required=true) String price, @RequestParam("pic") MultipartFile fileAttach, HttpServletRequest req ) throws IOException{
 		//判断上传文件是否为空
 		if(!fileAttach.isEmpty()){
@@ -80,18 +81,16 @@ public class MgtComputerController {
 			mbgComputer.setTrademark(tradeMark);
 			mbgComputer.setPrice(Float.parseFloat(price));
 			mbgComputer.setPic(newFileName);
-			mgtComputerService.addComputer(mbgComputer);
+			String result = mgtComputerService.addComputer(mbgComputer);
 			
-			Map<String, String> callback_json = new HashMap<String, String>();
-			callback_json.put("msg", "添加成功");
-			return new ResponseEntity<Map>(callback_json, HttpStatus.OK);
+			return new ResponseEntity<String>(result, HttpStatus.OK);
 
 		}
 		
 		Map<String, String> callback_json = new HashMap<String, String>();
 		callback_json.put("msg", "图片没有上传!");
-		
-		return new ResponseEntity<Map>(callback_json, HttpStatus.BAD_REQUEST);
+		String result = SoftcitsJsonUtil.objectToJson(callback_json);
+		return new ResponseEntity<String>(result, HttpStatus.BAD_REQUEST);
 		
 	}
 

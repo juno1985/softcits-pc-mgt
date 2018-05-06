@@ -34,9 +34,7 @@ public class MgtComputerService {
 		
 		String pcJson = SoftcitsJsonUtil.objectToJson(mbgComputer);
 		
-		System.out.println("---------------------------");
-		System.out.println(pcJson);
-		
-		return null;
+		return SoftcitsHttpClientUtils.doPostJson(PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/add", pcJson);
+
 	}
 }
