@@ -99,10 +99,8 @@ function pc_add_submit(){
 		url:"/mgt/computer/add",
 		type:"post",
 		complete:function(data){
-			
-				alert(data);
-			
-			
+				var callback_json = JSON.parse(data.responseText);
+				alert(callback_json.msg);
 		}
 	});
 }
