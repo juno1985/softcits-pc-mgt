@@ -121,7 +121,7 @@ function pc_form_validate(obj){
 		//获取用户输入的值
 		var input_value = $(element).val();
 		//如果用户输入为空,则不合法,返回false,
-		if(input_value==""||input_value.length==0||input_value==null){
+		if(input_value.trim()==""||input_value.length==0||input_value==null){
 			$(element).css("border", "1px solid red");
 			result = false;
 		}

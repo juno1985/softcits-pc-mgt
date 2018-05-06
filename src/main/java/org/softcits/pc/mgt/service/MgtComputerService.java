@@ -3,6 +3,8 @@ package org.softcits.pc.mgt.service;
 import java.util.HashMap;
 import java.util.Map;
 import org.softcits.pc.mgt.common.SoftcitsHttpClientUtils;
+import org.softcits.pc.mgt.common.SoftcitsJsonUtil;
+import org.softcits.pc.mgt.model.MbgComputer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,16 @@ public class MgtComputerService {
 	public String deleteById(String cid) {
 		return SoftcitsHttpClientUtils.doGet(
 				PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/" + cid + "/delete");
+	}
+	
+	//添加PC
+	public String addComputer(MbgComputer mbgComputer) {
+		
+		String pcJson = SoftcitsJsonUtil.objectToJson(mbgComputer);
+		
+		System.out.println("---------------------------");
+		System.out.println(pcJson);
+		
+		return null;
 	}
 }

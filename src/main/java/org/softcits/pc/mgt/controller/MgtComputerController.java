@@ -22,6 +22,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.softcits.pc.mgt.common.UUIDUtil;
 import org.softcits.pc.mgt.service.MgtComputerService;
+import org.softcits.pc.mgt.model.MbgComputer;
 @Controller
 public class MgtComputerController {
 	
@@ -75,6 +76,11 @@ public class MgtComputerController {
 			
 			//实现文件的上传拷贝
 			FileUtils.copyInputStreamToFile(fileAttach.getInputStream(), file);
+			MbgComputer  mbgComputer = new MbgComputer();
+			mbgComputer.setTrademark(tradeMark);
+			mbgComputer.setPrice(Float.parseFloat(price));
+			mbgComputer.setPic(newFileName);
+			mgtComputerService.addComputer(mbgComputer);
 			
 			Map<String, String> callback_json = new HashMap<String, String>();
 			callback_json.put("msg", "添加成功");
