@@ -44,9 +44,9 @@
 						<div id="collapseListGroup1" class="panel-collapse collapse in"
 							role="tabpanel" aria-labelledby="collapseListGroupHeading1">
 							<ul class="list-group">
-								<li class="list-group-item"><a href="javascript:void(0);">PC列表</a>
+								<li class="list-group-item"><a href="javascript:void(0);" onclick="pc_list(1,7)">PC列表</a>
 								</li>
-								<li class="list-group-item"><a href="javascript:void(0);">添加PC</a>
+								<li class="list-group-item"><a href="javascript:void(0);" onclick="pc_add()">添加PC</a>
 								</li>
 
 							</ul>

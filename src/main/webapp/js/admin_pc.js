@@ -1,5 +1,16 @@
 $(document).ready(function(){
+	//第一次加载页面展示商品列表
+	//第1页,每页7条数据
 	pc_list(1,7);
+	//左侧导航栏箭头图标互动
+	$(".panel-heading").click(function(e) {
+		console.log(e);
+		/* 切换折叠指示图标 */
+		$(this).find("span").toggleClass("glyphicon-chevron-down");
+		$(this).find("span").toggleClass("glyphicon-chevron-up");
+	});
+	//绑定动态加载的添加商品按钮事件
+	$('#mgt-content').on('click','.pcFormSubmit',pc_add_submit);
 });
 
 //展现PC列表
@@ -71,5 +82,27 @@ function pcDelete(obj){
 		success:function(data){
 			pc_list(1,7);
 			}
+	});
+}
+function pc_add(){
+	//先删除内容然后再加载添加商品html
+	$('#mgt-content').children().remove();
+	$.get("/mgt/page/pc_add.html", function(data){
+		$('#mgt-content').html(data);
+	});
+}
+function pc_add_submit(){
+	//将pcForm转化为数组,从而提交到后台
+	var pc_form_fields = $('#pcForm').serializeArray();
+	//发生post请求
+	$('#pcForm').ajaxSubmit({
+		url:"/mgt/computer/add",
+		type:"post",
+		complete:function(data){
+			
+				alert(data);
+			
+			
+		}
 	});
 }
