@@ -92,6 +92,13 @@ function pc_add(){
 	});
 }
 function pc_add_submit(){
+	//如果表单验证失败
+	if(!pc_form_validate('#pcForm')){
+		//则停止执行,返回false
+		//注:JS中 return false;可以停止以后所有事件执行
+		return false;
+	}
+	
 	//将pcForm转化为数组,从而提交到后台
 	var pc_form_fields = $('#pcForm').serializeArray();
 	//发生post请求
@@ -103,4 +110,21 @@ function pc_add_submit(){
 				alert(callback_json.msg);
 		}
 	});
+}
+//表单验证
+function pc_form_validate(obj){
+	var result = true;
+	//获取表单中所有的input为text的DOM
+	var arrayInput = $(obj).find(":text");
+	//遍历DOM
+	arrayInput.each(function(index, element){
+		//获取用户输入的值
+		var input_value = $(element).val();
+		//如果用户输入为空,则不合法,返回false,
+		if(input_value==""||input_value.length==0||input_value==null){
+			$(element).css("border", "1px solid red");
+			result = false;
+		}
+	});
+	return result;
 }

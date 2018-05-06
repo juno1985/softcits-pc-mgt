@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- 防止浏览器缓存JS -->
+<meta http-equiv="expires" content="0">  
+<meta http-equiv="pragma" content="no-cache">  
+<meta http-equiv="cache-control" content="no-cache">  
 <title>Insert title here</title>
 <link rel="stylesheet" href="/mgt/css/bootstrap.min.css">
 <!-- 引入jQuery文件 -->
