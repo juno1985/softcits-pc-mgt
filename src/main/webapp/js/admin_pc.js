@@ -130,8 +130,8 @@ function pc_form_validate(obj){
 			if(input_value.trim()==""||input_value.length==0||input_value==null){
 				$(element).css("border", "1px solid red");
 				result = false;
-				break;
 			}
+			break;
 		case "NumNotNull":
 			var maxValue = $(element).attr("validMax");
 			var minValue = $(element).attr("validMin");
@@ -140,7 +140,6 @@ function pc_form_validate(obj){
 				$(element).css("border", "1px solid red");
 				$(element).next(".err").text("必须为数值").css("color","red");
 				result = false;
-				break;
 			}
 			
 			//判断是否大于最大值
@@ -148,15 +147,14 @@ function pc_form_validate(obj){
 				$(element).css("border", "1px solid red");
 				$(element).next(".err").text("最大值必须为"+maxValue).css("color","red");
 				result = false;
-				break;
 			}
 			//判断是否小于最小值
 			else if(typeof(minValue)!="undefined" && input_value<minValue){
 				$(element).css("border", "1px solid red");
 				$(element).next(".err").text("最小值必须为"+minValue).css("color","red");
 				result = false;
-				break;
 			}
+			break;
 		}
 	});
 	return result;
