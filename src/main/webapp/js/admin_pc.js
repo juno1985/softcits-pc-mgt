@@ -159,3 +159,21 @@ function pc_form_validate(obj){
 	});
 	return result;
 }
+function pcClick(obj){
+	$('#myModal').modal();
+	//得到商品id
+	var cid = obj.getAttribute("value");
+	$.ajax({
+	
+		url: "/mgt/computer/" + cid + "/query",
+		type: "GET",
+		dataType: "json",
+		success:function(data){
+				/*console.log(data.cid + ' ' + data.tradeMark + ' ' + data.price + ' ' + data.pic);*/
+				$('#trade_mark').text("商品名称:  " + data.trademark);
+				$('#pcprice').text("商品价格: " + data.price + "元");
+				$('#pcpic').attr("src", "/mgt/upload/pc_pic/" + data.pic);
+			}
+	});	
+}
+

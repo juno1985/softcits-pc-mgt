@@ -37,4 +37,8 @@ public class MgtComputerService {
 		return SoftcitsHttpClientUtils.doPostJson(PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/add", pcJson);
 
 	}
+	public String queryById(String cid) {
+		
+		return SoftcitsHttpClientUtils.doGet(PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/" + cid + "/query");
+	}
 }

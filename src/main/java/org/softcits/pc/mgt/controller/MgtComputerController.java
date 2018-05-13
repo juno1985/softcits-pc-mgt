@@ -93,5 +93,11 @@ public class MgtComputerController {
 		return new ResponseEntity<String>(result, HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	@RequestMapping(path="/computer/{cid}/query", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<String> queryById(@PathVariable String cid) {
+		return new ResponseEntity<String>(mgtComputerService.queryById(cid),HttpStatus.OK);
+	}
 
 }

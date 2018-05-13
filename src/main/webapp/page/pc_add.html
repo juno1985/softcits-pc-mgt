@@ -4,10 +4,11 @@
 		<form id="pcForm" class="form" method="post"
 			enctype="multipart/form-data">
 			<div class="form-group">
-				商品名称:<input type="text" name="tradeMark" class="tradeMark">
+				商品名称:<input type="text" name="tradeMark" class="tradeMark" validType="StringNotNull">
 			</div>
 			<div class="form-group">
-				商品价格:<input type="text" name="price" class="price">
+				商品价格:<input type="text" name="price" class="price" validType="NumNotNull" validMin="0" validMax="10000">
+				<span class="err"></span>
 			</div>
 			<div class="form-group">
 				商品图片:

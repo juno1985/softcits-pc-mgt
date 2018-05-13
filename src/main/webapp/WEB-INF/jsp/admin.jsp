@@ -17,6 +17,9 @@
 <script type="text/javascript" src="/mgt/js/admin_pc.js"></script>
 </head>
 <body>
+<!-- 引入商品单体查询弹出框HTML -->
+<jsp:include page="/page/pop-window.jsp" />
+
 	<div class="container">
 		<div class="row">
 			<nav class="navbar navbar-default" role="navigation">
