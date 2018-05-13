@@ -133,8 +133,8 @@ function pc_form_validate(obj){
 			}
 			break;
 		case "NumNotNull":
-			var maxValue = $(element).attr("validMax");
-			var minValue = $(element).attr("validMin");
+			var maxValue = parseFloat($(element).attr("validMax"));
+			var minValue = parseFloat($(element).attr("validMin"));
 			//判断是否为数值
 			if(isNaN(input_value)){
 				$(element).css("border", "1px solid red");
@@ -143,13 +143,13 @@ function pc_form_validate(obj){
 			}
 			
 			//判断是否大于最大值
-			else if(typeof(maxValue)!="undefined" && input_value>maxValue){
+			else if(typeof(maxValue)!="undefined" && parseFloat(input_value)>maxValue){
 				$(element).css("border", "1px solid red");
 				$(element).next(".err").text("最大值必须为"+maxValue).css("color","red");
 				result = false;
 			}
 			//判断是否小于最小值
-			else if(typeof(minValue)!="undefined" && input_value<minValue){
+			else if(typeof(minValue)!="undefined" && parseFloat(input_value)<minValue){
 				$(element).css("border", "1px solid red");
 				$(element).next(".err").text("最小值必须为"+minValue).css("color","red");
 				result = false;
