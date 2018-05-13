@@ -176,4 +176,23 @@ function pcClick(obj){
 			}
 	});	
 }
-
+function pcUpldate(obj){
+	$("#mgt-content").children().remove();
+	$.get("/mgt/page/pc_update.html", function(data){
+		$("#mgt-content").html(data);
+	});
+	
+	var cid = obj.getAttribute("value");
+	
+	//查询然后存进页面
+	$.ajax({
+		url: "/mgt/computer/" + cid + "/query",
+		type: "GET",
+		dataType: "json",
+		success:function(data){
+				$('#mgt-content .cid').val(data.id);
+				$('#mgt-content .tradeMark').val(data.trademark);
+				$('#mgt-content .price').val(data.price);
+			}
+	});
+}
