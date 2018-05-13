@@ -121,10 +121,42 @@ function pc_form_validate(obj){
 	arrayInput.each(function(index, element){
 		//获取用户输入的值
 		var input_value = $(element).val();
-		//如果用户输入为空,则不合法,返回false,
-		if(input_value.trim()==""||input_value.length==0||input_value==null){
-			$(element).css("border", "1px solid red");
-			result = false;
+		//获取验证的属性
+		var type = $(element).attr("validType");
+		
+		switch(type){
+		case "StringNotNull":
+			//如果用户输入为空,则不合法,返回false,
+			if(input_value.trim()==""||input_value.length==0||input_value==null){
+				$(element).css("border", "1px solid red");
+				result = false;
+				break;
+			}
+		case "NumNotNull":
+			var maxValue = $(element).attr("validMax");
+			var minValue = $(element).attr("validMin");
+			//判断是否为数值
+			if(isNaN(input_value)){
+				$(element).css("border", "1px solid red");
+				$(element).next(".err").text("必须为数值").css("color","red");
+				result = false;
+				break;
+			}
+			
+			//判断是否大于最大值
+			else if(typeof(maxValue)!="undefined" && input_value>maxValue){
+				$(element).css("border", "1px solid red");
+				$(element).next(".err").text("最大值必须为"+maxValue).css("color","red");
+				result = false;
+				break;
+			}
+			//判断是否小于最小值
+			else if(typeof(minValue)!="undefined" && input_value<minValue){
+				$(element).css("border", "1px solid red");
+				$(element).next(".err").text("最小值必须为"+minValue).css("color","red");
+				result = false;
+				break;
+			}
 		}
 	});
 	return result;
