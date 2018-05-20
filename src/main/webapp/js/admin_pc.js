@@ -11,6 +11,8 @@ $(document).ready(function(){
 	});
 	//绑定动态加载的添加商品按钮事件
 	$('#mgt-content').on('click','.pcFormSubmit',pc_add_submit);
+	//绑定动态加载的更新商品按钮事件
+	$('#mgt-content').on('click','.pcUpdateSubmit',pc_update_submit);
 });
 
 //展现PC列表
@@ -157,6 +159,7 @@ function pc_form_validate(obj){
 			break;
 		}
 	});
+	
 	return result;
 }
 function pcClick(obj){
@@ -194,5 +197,23 @@ function pcUpldate(obj){
 				$('#mgt-content .tradeMark').val(data.trademark);
 				$('#mgt-content .price').val(data.price);
 			}
+	});
+}
+function pc_update_submit(){
+	//如果表单验证失败
+	if(!pc_form_validate('#pcUpdateForm')){
+		//则停止执行,返回false
+		//注:JS中 return false;可以停止以后所有事件执行
+		return false;
+	}
+	
+	//提交表单
+	$("#pcUpdateForm").ajaxSubmit({
+		url: "/mgt/computer/update",
+		type: "post",
+		complete: function(data){
+			var callback_json = JSON.parse(data.responseText);
+			alert(callback_json.msg);
+		}
 	});
 }

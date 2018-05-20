@@ -99,5 +99,19 @@ public class MgtComputerController {
 	public ResponseEntity<String> queryById(@PathVariable String cid) {
 		return new ResponseEntity<String>(mgtComputerService.queryById(cid),HttpStatus.OK);
 	}
+	
+	@RequestMapping(path="/computer/update", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<String> computeUpdate(@RequestParam(required=true) String cid, @RequestParam(required=true) String tradeMark, 
+			@RequestParam(required=true) String price){
+		MbgComputer mbgComputer = new MbgComputer();
+		mbgComputer.setId(Integer.parseInt(cid));
+		mbgComputer.setTrademark(tradeMark);
+		mbgComputer.setPrice(Float.parseFloat(price));
+		
+		String result = mgtComputerService.computerUpdate(mbgComputer);
+		System.out.println(result);
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
 
 }

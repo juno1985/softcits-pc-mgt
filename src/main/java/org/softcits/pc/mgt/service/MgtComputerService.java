@@ -41,4 +41,12 @@ public class MgtComputerService {
 		
 		return SoftcitsHttpClientUtils.doGet(PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/" + cid + "/query");
 	}
+	public String computerUpdate(MbgComputer mbgComputer) {
+		
+		//将对象转化为json
+		String pcJson = SoftcitsJsonUtil.objectToJson(mbgComputer);
+		System.out.println(pcJson);
+		
+		return SoftcitsHttpClientUtils.doPostJson(PC_CORE_BASE_URL + PC_CORE_CONTEXT_PATH + "/computer/update", pcJson);
+	}
 }
