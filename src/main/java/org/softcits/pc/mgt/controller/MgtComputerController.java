@@ -73,7 +73,7 @@ public class MgtComputerController {
 			String realPath = req.getSession().getServletContext().getRealPath("/upload/pc_pic");
 			//创建本地实体文件
 			//F:\git-repo\SpringWeb\src\main\webapp\resources\pic + "\" + "Logo.png" 
-			File file = new File(realPath + "\\" + newFileName);
+			File file = new File(realPath + "//" + newFileName);
 			
 			//实现文件的上传拷贝
 			FileUtils.copyInputStreamToFile(fileAttach.getInputStream(), file);
