@@ -4,7 +4,6 @@ $(document).ready(function(){
 	pc_list(1,7);
 	//左侧导航栏箭头图标互动
 	$(".panel-heading").click(function(e) {
-		console.log(e);
 		/* 切换折叠指示图标 */
 		$(this).find("span").toggleClass("glyphicon-chevron-down");
 		$(this).find("span").toggleClass("glyphicon-chevron-up");
