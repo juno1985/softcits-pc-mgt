@@ -216,3 +216,12 @@ function pc_update_submit(){
 		}
 	});
 }
+function get_users(obj){
+	var uJson = obj;
+	$(uJson).each(function(index, element){
+		console.log(element.username + " " + element.roleId);
+	});
+}
+function users_list(){
+	$("head").append("<script type=\"text/javascript\" src=\"http://localhost:8883/auth/user/getAll\"></script>")
+}

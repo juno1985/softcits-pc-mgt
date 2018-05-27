@@ -71,15 +71,7 @@
 						<div id="collapseListGroup2" class="panel-collapse collapse"
 							role="tabpanel" aria-labelledby="collapseListGroupHeading2">
 							<ul class="list-group">
-								<li class="list-group-item">
-									<button class="menu-item-left">
-										<span class="glyphicon glyphicon-triangle-right"></span>分组项2-1
-									</button>
-								</li>
-								<li class="list-group-item">
-									<button class="menu-item-left">
-										<span class="glyphicon glyphicon-triangle-right"></span>分组项2-2
-									</button>
+								<li class="list-group-item"><a href="javascript:void(0);" onclick="users_list()">用户列表</a>
 								</li>
 							</ul>
 						</div>
