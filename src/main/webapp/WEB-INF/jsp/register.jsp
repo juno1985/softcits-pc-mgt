@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container" style="margin-top:100px">
-	<form class="col-md-offset-4 col-md-4 form form-horizontal" action="/mgt/register" method="post" id="login_form">
+	<form class="col-md-offset-4 col-md-4 form form-horizontal" action="http://localhost:8883/auth/user/add" method="post" id="login_form">
 		<h3 class="text-center">用户注册</h3>
 		<div class="form-group">
 			<label for="username" class="col-md-2 control-label">账&nbsp;户:</label>

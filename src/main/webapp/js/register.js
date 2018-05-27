@@ -47,10 +47,4 @@ $(document).ready(function() {
 		//js阻止事件冒泡
 		event.stopPropagation();
 	});
-	
-	$("div").bind("click",function()
-			{console.log("div click event triggered")});
-			
-	$("body").bind("click",function()
-			{console.log("body click event triggered")});
 });
