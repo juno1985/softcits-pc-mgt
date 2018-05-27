@@ -10,6 +10,7 @@
 <meta http-equiv="cache-control" content="no-cache">  
 <title>Insert title here</title>
 <link rel="stylesheet" href="/mgt/css/bootstrap.min.css">
+<link rel="stylesheet" href="/mgt/css/register.css">
 <!-- 引入jQuery文件 -->
 <script type="text/javascript" src="/mgt/js/jquery.min.js"></script>
 <script type="text/javascript" src="/mgt/js/bootstrap.min.js"></script>
@@ -32,6 +33,7 @@
 			<label for="passwd" class="col-md-2 control-label">密&nbsp;码:</label>
 			<div class="col-md-10">
 				<input  type="password" class="form-control" id="passwd" name="passwd" placeholder="请输入密码">
+				<span class="glyphicon glyphicon-eye-close passwd-eye"></span>
 				<span class="err"></span>
 			</div>
 		</div>	
