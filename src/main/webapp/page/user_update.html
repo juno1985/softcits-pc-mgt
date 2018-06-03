@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="row">
+	<div class="col-md-4">
+		<form id="userUpdateForm" class="form" method="post"
+			enctype="multipart/form-data">
+			<div class="form-group">
+				员工序号:<input type="text" class="uid" name="uid" readonly="readonly">
+			</div>
+			<div class="form-group">
+				员工名称:<input type="text" name="username" class="username"
+					validType="StringNotNull"> <span class="err"></span>
+			</div>
+			<div class="form-group">
+				<label for="name">状态</label>
+				<div id="state_div"></div>
+			</div>
+			<div class="form-group">
+				<label for="roleId">角色</label>
+				<div id="role_div"></div>
+			</div>
+		</form>
+		<button class="btn btn-success pull-right pcUpdateSubmit">更新</button>
+	</div>
+</div>
