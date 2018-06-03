@@ -34,8 +34,8 @@ function pc_list(pageNum, pageSize){
 		    }
 		
 			var data = obj.data;
-			var content = "<table id="+'"pcTable"'+" class="+'"table table-condensed"'+" style=\"display:none\"><tbody>";
-			content += "<thead><tr><th>商品id</th><th>商品名称</th><th>商品价格</th><th>更新</th><th>删除</th></tr></thead>";
+			var content = "<table id="+'"pcTable"'+" class="+'"table table-condensed"'+" style=\"display:none\">";
+			content += "<thead><tr><th>商品id</th><th>商品名称</th><th>商品价格</th><th>更新</th><th>删除</th></tr></thead><tbody>";
 			// v-value, i-index
 			data.forEach(function(v,i){
 				/*
@@ -47,7 +47,7 @@ function pc_list(pageNum, pageSize){
 							'<td><a href="javascript:void(0);" onClick ="pcDelete(this)" value="'+v.id+'">删除</a></td>'+
 							"</tr>";
 			}); 
-			content += "</table></tbody>";
+			content += "</tbody></table>";
 			content += goPage(pageNum, pageSize, totalPage);
 			$('#mgt-content').append(content).find('#pcTable').show('slow');
 		}
@@ -218,9 +218,18 @@ function pc_update_submit(){
 }
 function get_users(obj){
 	var uJson = obj;
+	$("#mgt-content").children().remove();
+	var content = "<table id="+'"userTable"'+" class="+'"table table-condensed"'+" style=\"display:none\">";
+	content += "<thead><tr><th>员工id</th><th>员工名称</th><th>注册时间</th><th>状态</th><th>角色</th></tr></thead><tbody>";
 	$(uJson).each(function(index, element){
-		console.log(element.username + " " + element.roleId);
+//		console.log(element.username + " " + element.roleId);
+		var u_date = new Date(element.createTime);
+		content += "<tr><td>"+element.id+'</td><td><a id="user" href="javascript:void(0);" onClick="userClick(this)" value="'+ element.id +'">'+element.username+"</a></td><td>"+u_date.toLocaleDateString()+"</td>"+
+		"<td>"+element.state+"</td>"+"<td>"+element.rolename+"</td>"
+		+"</tr>";
 	});
+	content += "</tbody></table>";
+	$('#mgt-content').append(content).find('#userTable').show('slow');
 }
 function users_list(){
 	$("head").append("<script type=\"text/javascript\" src=\"http://localhost:8883/auth/user/getAll\"></script>")
