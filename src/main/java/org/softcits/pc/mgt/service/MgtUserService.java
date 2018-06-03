@@ -1,5 +1,8 @@
 package org.softcits.pc.mgt.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.softcits.pc.mgt.common.SoftcitsHttpClientUtils;
 import org.softcits.pc.mgt.common.SoftcitsJsonUtil;
 import org.softcits.pc.mgt.model.MbgUser;
@@ -19,5 +22,13 @@ public class MgtUserService {
 		//将对象转化为json
 		String userJson = SoftcitsJsonUtil.objectToJson(user);
 		return SoftcitsHttpClientUtils.doPostJson(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/user/update", userJson);
+	}
+
+
+	public String login(String username, String passwd) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("username", username);
+		param.put("passwd", passwd);
+		return SoftcitsHttpClientUtils.doPost(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/user/login", param);
 	}
 }

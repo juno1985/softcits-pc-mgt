@@ -8,7 +8,7 @@
 <meta http-equiv="expires" content="0">  
 <meta http-equiv="pragma" content="no-cache">  
 <meta http-equiv="cache-control" content="no-cache">  
-<title>用户注册</title>
+<title>用户登录</title>
 <link rel="stylesheet" href="/mgt/css/bootstrap.min.css">
 <link rel="stylesheet" href="/mgt/css/register.css">
 <!-- 引入jQuery文件 -->
@@ -19,8 +19,8 @@
 </head>
 <body>
 <div class="container" style="margin-top:100px">
-	<form class="col-md-offset-4 col-md-4 form form-horizontal" action="http://localhost:8883/auth/user/add" method="post" id="login_form">
-		<h3 class="text-center">用户注册</h3>
+	<form class="col-md-offset-4 col-md-4 form form-horizontal" action="/mgt/login" method="post" id="login_form">
+		<h3 class="text-center">用户登录</h3>
 		<div class="form-group">
 			<label for="username" class="col-md-2 control-label">账&nbsp;户:</label>
 			<div class="col-md-10">
@@ -28,7 +28,6 @@
 				<span class="err"></span>
 			</div>
 		</div>	
-		
 		<div class="form-group">
 			<label for="passwd" class="col-md-2 control-label">密&nbsp;码:</label>
 			<div class="col-md-10">
@@ -36,16 +35,8 @@
 				<span class="glyphicon glyphicon-eye-close passwd-eye"></span>
 				<span class="err"></span>
 			</div>
-		</div>	
-		
-		<div class="form-group">
-			<label for="repasswd" class="col-md-2 control-label">确&nbsp;认:</label>
-			<div class="col-md-10">
-				<input  type="password" class="form-control" id="repasswd" name="repasswd" placeholder="请重复输入密码">
-				<span class="err"></span>
-			</div>
-		</div>	
-		<button type="submit" class="btn btn-success center-block">注册</button>
+		</div>
+		<button type="submit" class="btn btn-success center-block">登录</button>
 	</form>
 </div>
 </body>
