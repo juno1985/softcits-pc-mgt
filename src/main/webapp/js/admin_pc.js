@@ -12,6 +12,20 @@ $(document).ready(function(){
 	$('#mgt-content').on('click','.pcFormSubmit',pc_add_submit);
 	// 绑定动态加载的更新商品按钮事件
 	$('#mgt-content').on('click','.pcUpdateSubmit',pc_update_submit);
+	
+	$("#mgt-content").on('click','.userUpdateSubmit', user_update_submit);
+	
+	function user_update_submit(){
+		$('#userUpdateForm').ajaxSubmit({
+			url:"/mgt/user/update",
+			type:"post",
+			complete:function(data){
+//					console.log(data);
+//					var callback_json = JSON.parse(data.responseText);
+//					alert(callback_json.msg);
+			}
+		});
+	}
 });
 
 // 展现PC列表
@@ -295,6 +309,4 @@ function userClick(obj){
 			
 			}
 	});
-	
-	
 }
