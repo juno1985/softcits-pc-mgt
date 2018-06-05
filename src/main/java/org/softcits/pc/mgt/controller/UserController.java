@@ -26,7 +26,7 @@ public class UserController {
 		
 		mgtUserService.login(username, passwd);
 		
-		return "redict:/";
+		return "redirect:/";
 	}
 
 	@RequestMapping(path="/user/update", method=RequestMethod.POST)
