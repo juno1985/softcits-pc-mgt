@@ -31,7 +31,7 @@
 				<div>
 					<ul class="nav navbar-nav  navbar-right">
 						<li class="disabled"><a id="welcome_user"></a></li>
-						<li class="active"><a href="#">退出登录</a></li>
+						<li class="active"><a href="/mgt/logout">退出登录</a></li>
 					</ul>
 				</div>
 			</div>

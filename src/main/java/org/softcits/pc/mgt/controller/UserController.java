@@ -56,5 +56,16 @@ public class UserController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
+	@RequestMapping(path="/logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		String cookieValue = CookieUtils.getCookieValue(request, COOKIE_AUTH_KEY);
+		if(!StringUtils.isEmpty(cookieValue)) {
+			//删除本地cookie
+			CookieUtils.deleteCookie(request, response, COOKIE_AUTH_KEY);
+		}
+		mgtUserService.logout(cookieValue);
+		
+		return "redirect:/login";
+	}
 	
 }

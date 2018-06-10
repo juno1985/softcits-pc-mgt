@@ -38,7 +38,7 @@ $(document).ready(function(){
 			type: "GET",
 			dataType: "jsonp",
 			success:function(data){
-				$("#welcome_user").html(data.username);
+				$("#welcome_user").html("欢迎" + data.username +"登录,");
 			}
 		});
 	}

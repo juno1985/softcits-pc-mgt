@@ -31,4 +31,9 @@ public class MgtUserService {
 		param.put("passwd", passwd);
 		return SoftcitsHttpClientUtils.doPost(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/user/login", param);
 	}
+
+
+	public String logout(String token) {
+		return SoftcitsHttpClientUtils.doGet(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/" + token+ "/logout");
+	}
 }
