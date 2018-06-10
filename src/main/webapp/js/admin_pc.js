@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	// 第一次加载页面展示商品列表
 	// 第1页,每页7条数据
-	pc_list(1,7);
+//	pc_list(1,7);
 	// 左侧导航栏箭头图标互动
 	$(".panel-heading").click(function(e) {
 		/* 切换折叠指示图标 */
@@ -39,6 +39,18 @@ $(document).ready(function(){
 			dataType: "jsonp",
 			success:function(data){
 				$("#welcome_user").html("欢迎" + data.username +"登录,");
+				console.log(data.roleId);
+				//如果是manager登录
+				if(data.roleId == 2){
+					$("#pc_menu").css("display","none");
+					console.log("manager");
+				}
+				//如果是staff登录
+				else if(data.roleId == 3){
+					
+					$("#user_menu").css("display","none");
+					console.log("staff");
+				}
 			}
 		});
 	}
