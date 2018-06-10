@@ -36,4 +36,8 @@ public class MgtUserService {
 	public String logout(String token) {
 		return SoftcitsHttpClientUtils.doGet(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/" + token+ "/logout");
 	}
+	
+	public String getUserByToken(String token) {
+		return SoftcitsHttpClientUtils.doGet(AUTH_CORE_BASE_URL + AUTH_CORE_CONTEXT_PATH + "/" + token+ "/token");
+	}
 }
