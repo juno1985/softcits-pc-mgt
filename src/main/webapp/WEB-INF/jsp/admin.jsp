@@ -15,6 +15,7 @@
 <script type="text/javascript" src="/mgt/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/mgt/js/jquery.form.js"></script>
 <script type="text/javascript" src="/mgt/js/admin_pc.js"></script>
+<script type="text/javascript" src="/mgt/js/jquery.cookie.js"></script>
 </head>
 <body>
 <!-- 引入商品单体查询弹出框HTML -->
@@ -29,6 +30,7 @@
 				</div>
 				<div>
 					<ul class="nav navbar-nav  navbar-right">
+						<li class="disabled"><a id="welcome_user"></a></li>
 						<li class="active"><a href="#">退出登录</a></li>
 					</ul>
 				</div>

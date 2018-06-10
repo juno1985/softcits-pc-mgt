@@ -15,6 +15,8 @@ $(document).ready(function(){
 	
 	$("#mgt-content").on('click','.userUpdateSubmit', user_update_submit);
 	
+	confirmLogin();
+	
 	function user_update_submit(){
 		$('#userUpdateForm').ajaxSubmit({
 			url:"/mgt/user/update",
@@ -23,6 +25,20 @@ $(document).ready(function(){
 //					console.log(data);
 //					var callback_json = JSON.parse(data.responseText);
 //					alert(callback_json.msg);
+			}
+		});
+	}
+	
+	function confirmLogin(){
+		var _cookie = $.cookie("SOFTCITS_USER_COOKIE");
+		if(!_cookie)
+			return;
+		$.ajax({
+			url: "http://localhost:8883/auth/"+_cookie+"/token",
+			type: "GET",
+			dataType: "jsonp",
+			success:function(data){
+				$("#welcome_user").html(data.username);
 			}
 		});
 	}
