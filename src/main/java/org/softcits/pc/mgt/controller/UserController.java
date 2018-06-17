@@ -3,6 +3,8 @@ package org.softcits.pc.mgt.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.softcits.pc.mgt.auth.AuthClass;
+import org.softcits.pc.mgt.auth.AuthMethod;
 import org.softcits.pc.mgt.common.CookieUtils;
 import org.softcits.pc.mgt.model.MbgUser;
 import org.softcits.pc.mgt.service.MgtUserService;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.druid.util.StringUtils;
-
+@AuthClass
 @Controller
 public class UserController {
 	
@@ -25,12 +27,12 @@ public class UserController {
 	
 	@Value("${COOKIE_AUTH_KEY}")
 	private String COOKIE_AUTH_KEY;
-	
+	@AuthMethod(roleId="1,2,3")
 	@RequestMapping(path="/login", method=RequestMethod.GET)
 	public String goLoginView() {
 		return "login";
 	}
-	
+	@AuthMethod(roleId="1,2,3")
 	@RequestMapping(path="/login", method=RequestMethod.POST)
 	public String login(@RequestParam String username, @RequestParam String passwd, HttpServletRequest request, HttpServletResponse response) {
 		
@@ -44,7 +46,7 @@ public class UserController {
 		//登录失败则返回登录页面
 		return "redirect:/login";
 	}
-
+	@AuthMethod(roleId="1,2")
 	@RequestMapping(path="/user/update", method=RequestMethod.POST)
 	public ResponseEntity<String> updateUser(String uid, String username, String state, String roleId) {
 		MbgUser user = new MbgUser();
@@ -55,7 +57,7 @@ public class UserController {
 		String result = mgtUserService.updateUser(user);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
-	
+	@AuthMethod(roleId="1,2,3")
 	@RequestMapping(path="/logout", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		String cookieValue = CookieUtils.getCookieValue(request, COOKIE_AUTH_KEY);

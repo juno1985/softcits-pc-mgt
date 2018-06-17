@@ -20,10 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.softcits.pc.mgt.auth.AuthClass;
+import org.softcits.pc.mgt.auth.AuthMethod;
 import org.softcits.pc.mgt.common.SoftcitsJsonUtil;
 import org.softcits.pc.mgt.common.UUIDUtil;
 import org.softcits.pc.mgt.service.MgtComputerService;
 import org.softcits.pc.mgt.model.MbgComputer;
+@AuthClass
 @Controller
 public class MgtComputerController {
 	
@@ -34,23 +37,25 @@ public class MgtComputerController {
 	 * 跳转到WEB-INF/jsp/admin.jsp页面
 	 * @return
 	 */
+	@AuthMethod(roleId="1,2,3")
 	@RequestMapping(path= "/", method = RequestMethod.GET)
 	public String goAdminView() {
 		return "admin";
 	}
 
+	@AuthMethod(roleId="1,3")
 	@RequestMapping(path="/computer/all", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> getAllComputers(@RequestParam String pageSize, @RequestParam String pageNum) {
 		return new ResponseEntity<String>(mgtComputerService.getAllComputers(pageSize, pageNum),HttpStatus.OK);
 	}
-	
+	@AuthMethod(roleId="1,3")
 	@RequestMapping(path="/computer/{cid}/delete", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> deleteById(@PathVariable String cid) {
 		return new ResponseEntity<String>(mgtComputerService.deleteById(cid),HttpStatus.OK);
 	}
-	
+	@AuthMethod(roleId="1,3")
 	@RequestMapping(path="/computer/add", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> addComputer(@RequestParam(required=true) String tradeMark, 
@@ -93,13 +98,13 @@ public class MgtComputerController {
 		return new ResponseEntity<String>(result, HttpStatus.BAD_REQUEST);
 		
 	}
-	
+	@AuthMethod(roleId="1,3")
 	@RequestMapping(path="/computer/{cid}/query", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> queryById(@PathVariable String cid) {
 		return new ResponseEntity<String>(mgtComputerService.queryById(cid),HttpStatus.OK);
 	}
-	
+	@AuthMethod(roleId="1,3")
 	@RequestMapping(path="/computer/update", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> computeUpdate(@RequestParam(required=true) String cid, @RequestParam(required=true) String tradeMark, 
